@@ -1,83 +1,188 @@
-# LinkedIn Job Scanner
+<div align="center">
 
-Find fresh LinkedIn jobs from your terminal — **no login, no account, no ban risk.**
+# 🔍 LinkedIn Job Scanner
 
-It uses LinkedIn's public "see more jobs" guest API (the same one a logged-out
-visitor hits). It never signs in, never touches your `li_at` cookie, and never
-puts your account on the line. LinkedIn bans automation of *logged-in* sessions;
-this stays logged out.
+**Find fresh LinkedIn jobs from your terminal — no login, no account, no ban risk.**
 
-Results land in `results.csv` (open in Excel/Sheets) and `results.jsonl`.
+Set the roles you want once, run one command, get a clean spreadsheet of new postings.
 
-## Setup
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org)
+![Zero dependencies](https://img.shields.io/badge/dependencies-0-blue)
+![No login required](https://img.shields.io/badge/LinkedIn%20login-not%20required-success)
 
-Needs [Node.js](https://nodejs.org) 18+ (for built-in `fetch`). No `npm install` — zero dependencies.
+</div>
+
+---
+
+## Why this exists
+
+Scrolling LinkedIn for new jobs is slow, and most "automation" tools ask you to
+hand over your LinkedIn password or session cookie — which can get your account
+**restricted or banned**, because LinkedIn forbids automating a logged-in session.
+
+This tool never logs in. It reads the same **public** job listings a logged-out
+visitor sees, so your account is never involved and never at risk. It just does
+the boring part fast and drops the results into a spreadsheet.
+
+```text
+LinkedIn scan (account-free) — past 24h — 3 titles × 2 locations × 1 pass(es)
+
+  · data analyst … +14 new
+  · product manager … +9 new
+  · ux designer … +6 new
+
+New jobs: 29
+
+  + Spotify | Data Analyst, Growth | New York, NY
+  + Figma | Product Manager, Platform | Remote
+  + Airbnb | UX Designer II | San Francisco, CA
+  ...
+
+→ wrote 29 to results.csv / results.jsonl
+```
+
+---
+
+## Quick start (5 minutes, no coding needed)
+
+**1. Install Node.js** (only once, if you don't have it)
+Download the "LTS" version from **[nodejs.org](https://nodejs.org)** and install it. Done.
+
+**2. Get this tool**
+Click the green **`Code`** button above → **Download ZIP** → unzip it.
+(Or, if you know git: `git clone https://github.com/ishal1410/linkedin-job-scanner.git`)
+
+**3. Tell it what jobs you want**
+Open **`config.json`** in any text editor and change the two lines at the top:
+
+```json
+"titles":    ["data analyst", "business analyst"],
+"locations": ["United States", "Remote"]
+```
+
+That's it — put in whatever roles and places *you* want.
+
+**4. Run it**
+Open a terminal **in the tool's folder** and type:
 
 ```bash
-git clone <your-fork-url>
-cd linkedin-job-scanner
-# 1. open config.json, put YOUR roles + locations in "titles" and "locations"
-# 2. run it:
 node scan.mjs
 ```
 
-The shipped `config.json` has a placeholder — the scanner will remind you to set
-your own roles the first time. It works for **any** job, not just tech.
+Your results appear in **`results.csv`** — double-click to open it in Excel or
+Google Sheets.
 
-## Make it yours — edit `config.json`
+---
 
-That one file is the whole product. Nothing else needs touching. **Out of the
-box every filter is off** — set your `titles` and `locations`, run it, and you
-get every fresh job. Turn on filters only if you want them.
+## Where your results go
 
-| Key | What it does |
-|-----|--------------|
-| `titles` | Search terms — the roles you want. Works for **any** field: `"data scientist"`, `"product designer"`, `"registered nurse"`, `"accountant"`. |
-| `locations` | Where to search. `"United States"` = nationwide; `"Remote"`; a city like `"Austin, Texas, United States"`; or a country like `"United Kingdom"`. |
-| `freshnessHours` | Only jobs posted within this many hours (default 24). |
-| `experienceLevels` | LinkedIn level codes: `1`=Internship `2`=Entry `3`=Associate `4`=Mid-Senior `5`=Director `6`=Executive. `[]` = all levels (default). |
-| `includeAllExperience` | Also run a pass with no level filter (catches jobs LinkedIn left untagged). |
-| `titleMustMatch` | Keep a job only if its title has one of these words. `[]` = keep every title (default). |
-| `titleExclude` | Drop a job if its title has any of these words. |
-| `blockedCompanies` | Company names to always skip. |
-| `jdExcludePatterns` | Optional slower filter: reads each job's full description, drops it if a regex matches. `[]` = off (default). |
-| `maxResultsPerQuery` | Cap per search (default 300). |
+| File | What it is |
+|------|------------|
+| **`results.csv`** | Open in Excel / Google Sheets. Columns: date found, company, title, location, link. |
+| `results.jsonl` | Same data, one JSON object per line — handy if you want to script against it. |
+| `.seen.txt` | The tool's memory so re-runs don't show you the same job twice. Delete it to start fresh. |
 
-Change a value, save, run again. That's it.
+Run it again tomorrow and it only shows you what's **new** since last time.
 
-### Recipes (copy into `config.json` if you want them)
+---
 
-- **Only entry-level / new-grad:** `"experienceLevels": ["1", "2"]`
-- **No senior/lead roles:** `"titleExclude": ["senior", "sr", "staff", "principal", "lead", "manager", "director"]`
-- **Broad search term, tight results** (e.g. searching `"engineer"` but you only want software): `"titleMustMatch": ["software", "backend", "frontend", "full stack"]`
-- **Skip jobs demanding lots of experience:** `"jdExcludePatterns": ["\\b([5-9]|\\d{2,})\\+?\\s*years"]`
-- **Skip a company:** `"blockedCompanies": ["Acme Corp", "Initech"]`
+## Make it yours — `config.json`
 
-## Usage
+Everything the tool does is controlled by this one file. **All filters are off by
+default**, so you get every fresh job for your titles until you decide to narrow things down.
 
-```bash
-node scan.mjs            # jobs from the last freshnessHours, save results
-node scan.mjs --week     # last 7 days
-node scan.mjs --dry-run  # search + filter, print, save nothing
+| Setting | What it does |
+|---------|--------------|
+| `titles` | The roles to search — exactly what you'd type in LinkedIn's search box. Any field works. |
+| `locations` | `"United States"`, a city like `"Austin, Texas, United States"`, a country like `"United Kingdom"`, or `"Remote"`. |
+| `freshnessHours` | Only jobs posted within this many hours. Default `24`. |
+| `experienceLevels` | `1`=Internship `2`=Entry `3`=Associate `4`=Mid-Senior `5`=Director `6`=Executive. `[]` = all levels. |
+| `includeAllExperience` | Also do a pass with no level filter (catches jobs LinkedIn left untagged). |
+| `titleMustMatch` | Keep a job only if its title contains one of these words. `[]` = keep all. |
+| `titleExclude` | Skip a job if its title contains any of these words. |
+| `blockedCompanies` | Companies to always skip. |
+| `jdExcludePatterns` | Advanced: reads each full job description and skips it if a pattern matches. Slower. `[]` = off. |
+| `maxResultsPerQuery` | Max jobs per search. Default `300`. |
+
+### Handy recipes
+
+Copy any of these into `config.json`:
+
+```jsonc
+// Only entry-level / new-grad roles
+"experienceLevels": ["1", "2"]
+
+// Hide senior and management roles
+"titleExclude": ["senior", "sr", "staff", "principal", "lead", "manager", "director"]
+
+// Searching a broad word but only want software roles
+"titleMustMatch": ["software", "backend", "frontend", "full stack"]
+
+// Skip jobs that demand 5+ years of experience
+"jdExcludePatterns": ["\\b([5-9]|\\d{2,})\\+?\\s*years"]
+
+// Never show me these companies
+"blockedCompanies": ["Acme Corp", "Initech"]
 ```
 
-Re-runs skip jobs already saved (remembered in `.seen.txt` — delete it to reset).
+---
 
-## Automate it
+## Run it on autopilot
 
-Run it on a schedule so you catch jobs early:
+Catch jobs the moment they post by running the scanner on a schedule.
 
-- **Mac/Linux** — `crontab -e`, then `0 */6 * * * cd /path/to/linkedin-job-scanner && node scan.mjs`
-- **Windows** — Task Scheduler → new task → `node C:\path\to\scan.mjs`
+**Windows** — open **Task Scheduler** → *Create Basic Task* → set it daily/hourly →
+Action: *Start a program* → Program: `node`, Arguments: `scan.mjs`, Start in: the tool's folder.
 
-## Notes & limits
+**Mac / Linux** — `crontab -e`, then add (runs every 6 hours):
 
-- **Be gentle.** The scanner paces itself (~1s between requests) to avoid rate limits. Don't crank the pacing down — you'll get 429'd and lose results.
-- The guest API returns roughly the last ~370 jobs per search; very broad searches
-  hit that ceiling. Narrower titles/locations = better coverage. Run often.
-- This reads *public* data only. Respect LinkedIn's terms and your local laws;
-  use it for your own job hunt, not bulk harvesting.
+```cron
+0 */6 * * * cd /path/to/linkedin-job-scanner && node scan.mjs
+```
+
+---
+
+## Commands
+
+```bash
+node scan.mjs             # find jobs from the last 24h (or your freshnessHours) and save them
+node scan.mjs --week      # widen to the last 7 days
+node scan.mjs --dry-run   # preview results in the terminal without saving anything
+```
+
+---
+
+## FAQ
+
+**Will this get my LinkedIn account banned?**
+No. It never logs in and never touches your account — it only reads public listings.
+
+**I got zero results — is it broken?**
+Usually your search is too narrow or nothing new was posted in the last 24h. Try
+`node scan.mjs --week`, add more `locations`, or broaden your `titles`.
+
+**Do I need a LinkedIn account at all?**
+No.
+
+**It says "This needs Node.js 18 or newer."**
+Install the LTS version from [nodejs.org](https://nodejs.org) and try again.
+
+**Can I search non-tech jobs?**
+Yes — nurse, teacher, accountant, sales, anything. Just put it in `titles`.
+
+---
+
+## Good to know
+
+- The tool paces itself (about one request per second) so LinkedIn doesn't rate-limit it. Please don't speed it up.
+- LinkedIn's public feed returns roughly the most recent ~370 jobs per search, so very broad searches hit a ceiling. Narrower searches run more often = better coverage.
+- This reads **public** data only. Use it for your own job hunt and follow LinkedIn's terms and your local laws.
+
+## Contributing
+
+Issues and pull requests welcome. It's a single small file (`scan.mjs`) plus a config — easy to hack on.
 
 ## License
 
-MIT — do whatever, no warranty.
+[MIT](LICENSE) — free to use, modify, and share. No warranty.
