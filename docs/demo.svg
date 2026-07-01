@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" font-family="SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace" font-size="14">
+  <rect width="760" height="470" rx="10" fill="#0d1117"/>
+  <rect width="760" height="34" rx="10" fill="#161b22"/>
+  <rect y="24" width="760" height="10" fill="#161b22"/>
+  <circle cx="20" cy="17" r="6" fill="#ff5f56"/>
+  <circle cx="40" cy="17" r="6" fill="#ffbd2e"/>
+  <circle cx="60" cy="17" r="6" fill="#27c93f"/>
+  <text x="380" y="22" text-anchor="middle" fill="#8b949e" font-size="12">linkedin-job-scanner — bash</text>
+  <g fill="#c9d1d9">
+    <text x="20" y="66"><tspan fill="#27c93f">$</tspan> <tspan fill="#e6edf3">node scan.mjs</tspan></text>
+    <text x="20" y="98" fill="#8b949e">LinkedIn scan (account-free) — past 24h — 3 titles × 2 locations × 1 pass(es)</text>
+    <text x="20" y="130" fill="#79c0ff">  · data analyst …<tspan fill="#3fb950"> +14 new</tspan></text>
+    <text x="20" y="152" fill="#79c0ff">  · product manager …<tspan fill="#3fb950"> +9 new</tspan></text>
+    <text x="20" y="174" fill="#79c0ff">  · ux designer …<tspan fill="#3fb950"> +6 new</tspan></text>
+    <text x="20" y="206" fill="#8b949e">Pages fetched: 24 | 429 throttles: 0</text>
+    <text x="20" y="228" fill="#e6edf3">New jobs: 29</text>
+    <text x="20" y="262">  <tspan fill="#3fb950">+</tspan> Spotify | Data Analyst, Growth | New York, NY</text>
+    <text x="20" y="284">  <tspan fill="#3fb950">+</tspan> Figma | Product Manager, Platform | Remote</text>
+    <text x="20" y="306">  <tspan fill="#3fb950">+</tspan> Airbnb | UX Designer II | San Francisco, CA</text>
+    <text x="20" y="328">  <tspan fill="#3fb950">+</tspan> Notion | Data Analyst | Remote</text>
+    <text x="20" y="350">  <tspan fill="#3fb950">+</tspan> Stripe | Product Manager | Seattle, WA</text>
+    <text x="20" y="372" fill="#8b949e">  …and 24 more</text>
+    <text x="20" y="410" fill="#d2a8ff">→ wrote 29 to results.csv / results.jsonl</text>
+    <text x="20" y="442"><tspan fill="#27c93f">$</tspan> <tspan fill="#e6edf3">▊</tspan></text>
+  </g>
+</svg>

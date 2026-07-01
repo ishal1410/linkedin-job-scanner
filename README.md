@@ -25,22 +25,9 @@ This tool never logs in. It reads the same **public** job listings a logged-out
 visitor sees, so your account is never involved and never at risk. It just does
 the boring part fast and drops the results into a spreadsheet.
 
-```text
-LinkedIn scan (account-free) — past 24h — 3 titles × 2 locations × 1 pass(es)
-
-  · data analyst … +14 new
-  · product manager … +9 new
-  · ux designer … +6 new
-
-New jobs: 29
-
-  + Spotify | Data Analyst, Growth | New York, NY
-  + Figma | Product Manager, Platform | Remote
-  + Airbnb | UX Designer II | San Francisco, CA
-  ...
-
-→ wrote 29 to results.csv / results.jsonl
-```
+<div align="center">
+  <img src="docs/demo.svg" alt="Terminal showing the scanner finding 29 new jobs across three roles" width="720">
+</div>
 
 ---
 
