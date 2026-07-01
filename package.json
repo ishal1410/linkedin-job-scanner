@@ -4,7 +4,13 @@
   "description": "Account-free LinkedIn job scanner via the public guest API. No login, no ban risk. Config-driven.",
   "type": "module",
   "bin": { "linkedin-scan": "scan.mjs" },
-  "scripts": { "scan": "node scan.mjs" },
+  "files": ["scan.mjs", "lib.mjs", "config.json"],
+  "scripts": {
+    "scan": "node scan.mjs",
+    "test": "node test.mjs"
+  },
+  "keywords": ["linkedin", "jobs", "job-search", "scanner", "cli"],
+  "repository": { "type": "git", "url": "https://github.com/ishal1410/linkedin-job-scanner.git" },
   "engines": { "node": ">=18" },
   "license": "MIT"
 }

@@ -21,6 +21,7 @@
 import { readFileSync, appendFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { wordRe, csvCell, strip } from './lib.mjs';
 
 // Fail loudly and helpfully instead of "fetch is not defined" three screens down.
 if (typeof fetch !== 'function') {
@@ -65,28 +66,13 @@ if (cfg.experienceLevels && cfg.experienceLevels.length)
 if (cfg.includeAllExperience || !PASSES.length)
   PASSES.push({ q: '', tag: ' [all-exp]' });
 
-// Build case-insensitive matchers from the config word lists. We bound with
-// alphanumeric lookarounds instead of \b so terms ending/starting in punctuation
-// still work — \b would make "c++", "c#", ".net", "node.js" match nothing.
-const wordRe = (words) => words && words.length
-  ? new RegExp('(?<![a-z0-9])(' + words.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')(?![a-z0-9])', 'i')
-  : null;
+// Build case-insensitive matchers from the config word lists (see lib.mjs).
 const MUST    = wordRe(cfg.titleMustMatch);
 const EXCLUDE = wordRe(cfg.titleExclude);
 const BLOCKED = wordRe(cfg.blockedCompanies);
 const JD_EXCLUDE = (cfg.jdExcludePatterns || []).map(p => new RegExp(p, 'i'));
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-// Decode HTML entities properly so names like "O'Reilly", "Macy's", "AT&T" don't
-// come out as "O Reilly" / "Macy s" / "AT T". Numeric entities cover apostrophes
-// (&#39;) and everything else; a few named ones round it out.
-const NAMED = { '&amp;': '&', '&quot;': '"', '&apos;': "'", '&lt;': '<', '&gt;': '>', '&nbsp;': ' ' };
-const decode = s => (s || '')
-  .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
-  .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n))
-  .replace(/&(?:amp|quot|apos|lt|gt|nbsp);/g, m => NAMED[m]);
-const strip = s => decode((s || '').replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
-const csvCell = s => `"${String(s ?? '').replace(/"/g, '""')}"`;
 
 // 12s per-request timeout — without it one dead connection hangs the whole scan.
 async function fetchText(url) {

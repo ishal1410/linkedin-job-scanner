@@ -6,6 +6,7 @@
 
 Set the roles you want once, run one command, get a clean spreadsheet of new postings.
 
+[![CI](https://github.com/ishal1410/linkedin-job-scanner/actions/workflows/ci.yml/badge.svg)](https://github.com/ishal1410/linkedin-job-scanner/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org)
 ![Zero dependencies](https://img.shields.io/badge/dependencies-0-blue)
@@ -179,7 +180,12 @@ Yes — nurse, teacher, accountant, sales, anything. Just put it in `titles`.
 
 ## Contributing
 
-Issues and pull requests welcome. It's a single small file (`scan.mjs`) plus a config — easy to hack on.
+Issues and pull requests welcome. The code is small: `scan.mjs` (the scanner),
+`lib.mjs` (pure helpers), and `config.json`. Run the tests before opening a PR:
+
+```bash
+npm test
+```
 
 ## License
 
