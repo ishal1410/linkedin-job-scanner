@@ -61,9 +61,11 @@ if (cfg.experienceLevels && cfg.experienceLevels.length)
 if (cfg.includeAllExperience || !PASSES.length)
   PASSES.push({ q: '', tag: ' [all-exp]' });
 
-// Build case-insensitive matchers from the config word lists.
+// Build case-insensitive matchers from the config word lists. We bound with
+// alphanumeric lookarounds instead of \b so terms ending/starting in punctuation
+// still work — \b would make "c++", "c#", ".net", "node.js" match nothing.
 const wordRe = (words) => words && words.length
-  ? new RegExp('\\b(' + words.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')\\b', 'i')
+  ? new RegExp('(?<![a-z0-9])(' + words.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')(?![a-z0-9])', 'i')
   : null;
 const MUST    = wordRe(cfg.titleMustMatch);
 const EXCLUDE = wordRe(cfg.titleExclude);
