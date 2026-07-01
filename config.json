@@ -1,0 +1,42 @@
+{
+  "_comment": "Edit this file to make the scanner yours. Nothing else needs touching.",
+
+  "titles": [
+    "software engineer",
+    "software developer",
+    "backend engineer",
+    "frontend engineer",
+    "full stack engineer",
+    "data engineer"
+  ],
+
+  "locations": [
+    "United States",
+    "New York, United States",
+    "San Francisco Bay Area",
+    "Remote"
+  ],
+
+  "freshnessHours": 24,
+
+  "_experienceLevels_help": "LinkedIn f_E codes: 1=Internship 2=Entry 3=Associate 4=Mid-Senior 5=Director 6=Executive. Leave [] to not filter by level.",
+  "experienceLevels": ["2", "3"],
+  "includeAllExperience": true,
+
+  "_titleMustMatch_help": "A job's title must contain at least one of these words (case-insensitive). Empty [] = keep all titles.",
+  "titleMustMatch": ["engineer", "developer", "swe", "sde"],
+
+  "_titleExclude_help": "Drop the title if it contains any of these words.",
+  "titleExclude": ["senior", "sr", "staff", "principal", "lead", "manager", "director", "vp", "intern", "clearance"],
+
+  "blockedCompanies": [],
+
+  "_jdExcludePatterns_help": "OPTIONAL second pass: fetch each job's full description and drop it if any regex matches. Slower (one request per job). Empty [] = skip this pass entirely. Examples below — delete what you don't want.",
+  "jdExcludePatterns": [
+    "\\b([5-9]|\\d{2,})\\+?\\s*years",
+    "must be a us citizen",
+    "security clearance required"
+  ],
+
+  "maxResultsPerQuery": 300
+}
