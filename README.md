@@ -64,7 +64,12 @@ Open **`config.json`** in any text editor and change the two lines at the top:
 That's it — put in whatever roles and places *you* want.
 
 **4. Run it**
-Open a terminal **in the tool's folder** and type:
+Open a terminal **in the tool's folder**, then type `node scan.mjs`.
+
+> **How do I open a terminal in the folder?**
+> - **Windows:** open the unzipped folder, right-click an empty area → *Open in Terminal*
+>   (or type `cmd` in the folder's address bar and press Enter).
+> - **Mac:** right-click the folder → *New Terminal at Folder*.
 
 ```bash
 node scan.mjs
@@ -91,6 +96,7 @@ Run it again tomorrow and it only shows you what's **new** since last time.
 
 Everything the tool does is controlled by this one file. **All filters are off by
 default**, so you get every fresh job for your titles until you decide to narrow things down.
+(Keys starting with `_` are just help notes — leave them alone or delete them; the tool ignores them.)
 
 | Setting | What it does |
 |---------|--------------|
@@ -107,23 +113,28 @@ default**, so you get every fresh job for your titles until you decide to narrow
 
 ### Handy recipes
 
-Copy any of these into `config.json`:
+Find the matching line in `config.json` and replace it with one of these.
+**Copy only the line itself** — `config.json` can't contain `//` comments.
 
-```jsonc
-// Only entry-level / new-grad roles
-"experienceLevels": ["1", "2"]
-
-// Hide senior and management roles
-"titleExclude": ["senior", "sr", "staff", "principal", "lead", "manager", "director"]
-
-// Searching a broad word but only want software roles
-"titleMustMatch": ["software", "backend", "frontend", "full stack"]
-
-// Skip jobs that demand 5+ years of experience
-"jdExcludePatterns": ["\\b([5-9]|\\d{2,})\\+?\\s*years"]
-
-// Never show me these companies
-"blockedCompanies": ["Acme Corp", "Initech"]
+**Only entry-level / new-grad roles**
+```json
+"experienceLevels": ["1", "2"],
+```
+**Hide senior and management roles**
+```json
+"titleExclude": ["senior", "sr", "staff", "principal", "lead", "manager", "director"],
+```
+**Searching a broad word but only want software roles**
+```json
+"titleMustMatch": ["software", "backend", "frontend", "full stack"],
+```
+**Skip jobs that demand 5+ years of experience**
+```json
+"jdExcludePatterns": ["\\b([5-9]|\\d{2,})\\+?\\s*years"],
+```
+**Never show me these companies**
+```json
+"blockedCompanies": ["Acme Corp", "Initech"],
 ```
 
 ---
