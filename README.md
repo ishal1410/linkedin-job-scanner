@@ -40,7 +40,7 @@ Checking LinkedIn for new jobs by hand is slow. Most tools that promise to autom
 This one never logs in. It reads the same public listings a logged-out visitor sees, so your account stays out of it entirely. It just does the tedious checking for you and writes what it finds to a spreadsheet.
 
 <div align="center">
-  <img src="docs/demo.gif" alt="Terminal showing the scanner finding 29 new jobs across three roles" width="720">
+  <img src="docs/demo-animated.svg" alt="Terminal showing the scanner finding 29 new jobs across three roles" width="720">
 </div>
 
 ---
