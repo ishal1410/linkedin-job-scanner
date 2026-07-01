@@ -1,0 +1,41 @@
+name: Bug report
+description: Something isn't working the way you expected.
+labels: [bug]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you expect, and what did you get instead?
+    validations:
+      required: true
+  - type: textarea
+    id: config
+    attributes:
+      label: Your config.json
+      description: Paste it here (it has no private info). Redact anything you'd rather not share.
+      render: json
+    validations:
+      required: false
+  - type: input
+    id: command
+    attributes:
+      label: Command you ran
+      placeholder: node scan.mjs --week
+    validations:
+      required: true
+  - type: input
+    id: node-version
+    attributes:
+      label: Node version
+      description: Run `node --version`
+      placeholder: v20.11.1
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: Windows 11 / macOS 14 / Ubuntu 24.04
+    validations:
+      required: true

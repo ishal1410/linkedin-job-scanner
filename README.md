@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="docs/banner.svg" alt="LinkedIn Job Scanner" width="820">
+
 # LinkedIn Job Scanner
 
 **Pull fresh LinkedIn job postings straight into a spreadsheet, without ever logging in.**
@@ -16,6 +18,21 @@ You set your target roles once. After that, one command grabs the newest posting
 
 ---
 
+## Contents
+
+- [Why this exists](#why-this-exists)
+- [Quick start](#quick-start-about-5-minutes-no-coding-needed)
+- [Where your results go](#where-your-results-go)
+- [Make it yours: config.json](#make-it-yours-configjson)
+- [Run it on autopilot](#run-it-on-autopilot)
+- [Commands](#commands)
+- [FAQ](#faq)
+- [Good to know](#good-to-know)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
 ## Why this exists
 
 Checking LinkedIn for new jobs by hand is slow. Most tools that promise to automate it ask for your LinkedIn password or session cookie, which is risky: LinkedIn forbids automating a logged-in session, and accounts that do it can get restricted or banned.
@@ -23,7 +40,7 @@ Checking LinkedIn for new jobs by hand is slow. Most tools that promise to autom
 This one never logs in. It reads the same public listings a logged-out visitor sees, so your account stays out of it entirely. It just does the tedious checking for you and writes what it finds to a spreadsheet.
 
 <div align="center">
-  <img src="docs/demo.svg" alt="Terminal showing the scanner finding 29 new jobs across three roles" width="720">
+  <img src="docs/demo-animated.svg" alt="Terminal showing the scanner finding 29 new jobs across three roles" width="720">
 </div>
 
 ---

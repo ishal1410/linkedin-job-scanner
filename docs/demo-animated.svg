@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="380" font-family="SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace" font-size="14">
+  <rect width="760" height="380" rx="10" fill="#0d1117"/>
+  <rect width="760" height="34" rx="10" fill="#161b22"/>
+  <rect y="24" width="760" height="10" fill="#161b22"/>
+  <circle cx="20" cy="17" r="6" fill="#ff5f56"/>
+  <circle cx="40" cy="17" r="6" fill="#ffbd2e"/>
+  <circle cx="60" cy="17" r="6" fill="#27c93f"/>
+  <text x="380" y="22" text-anchor="middle" fill="#8b949e" font-size="12">linkedin-job-scanner — bash</text>
+  <text x="20" y="66" opacity="0"><tspan fill="#27c93f">$</tspan> <tspan fill="#e6edf3">node scan.mjs</tspan><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.02;0.02;0.93;0.96;1" dur="11s" repeatCount="indefinite"/></text>
+  <text x="20" y="98" fill="#8b949e" opacity="0">LinkedIn scan (account-free) — past 24h — 3 titles × 2 locations<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.075;0.075;0.93;0.96;1" dur="11s" repeatCount="indefinite"/></text>
+  <text x="20" y="130" fill="#79c0ff" opacity="0">  · data analyst …<tspan fill="#3fb950"> +14 new</tspan><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.13;0.13;0.93;0.96;1" dur="11s" repeatCount="indefinite"/></text>
+  <text x="20" y="152" fill="#79c0ff" opacity="0">  · product manager …<tspan fill="#3fb950"> +9 new</tspan><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.185;0.185;0.93;0.96;1" dur="11s" repeatCount="indefinite"/></text>
+  <text x="20" y="174" fill="#79c0ff" opacity="0">  · ux designer …<tspan fill="#3fb950"> +6 new</tspan><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24;0.24;0.93;0.96;1" dur="11s" repeatCount="indefinite"/></text>
+  <text x="20" y="206" fill="#e6edf3" opacity="0">New jobs: 29<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.295;0.295;0.93;0.96;1" dur="11s" repeatCount="indefinite"/></text>
+  <text x="20" y="240" fill="#c9d1d9" opacity="0">  <tspan fill="#3fb950">+</tspan> Spotify | Data Analyst, Growth | New York, NY<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.35;0.35;0.93;0.96;1" dur="11s" repeatCount="indefinite"/></text>
+  <text x="20" y="262" fill="#c9d1d9" opacity="0">  <tspan fill="#3fb950">+</tspan> Figma | Product Manager, Platform | Remote<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.405;0.405;0.93;0.96;1" dur="11s" repeatCount="indefinite"/></text>
+  <text x="20" y="284" fill="#c9d1d9" opacity="0">  <tspan fill="#3fb950">+</tspan> Airbnb | UX Designer II | San Francisco, CA<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.46;0.46;0.93;0.96;1" dur="11s" repeatCount="indefinite"/></text>
+  <text x="20" y="306" fill="#c9d1d9" opacity="0">  <tspan fill="#8b949e">…and 26 more</tspan><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.515;0.515;0.93;0.96;1" dur="11s" repeatCount="indefinite"/></text>
+  <text x="20" y="340" fill="#d2a8ff" opacity="0">→ wrote 29 to results.csv / results.jsonl<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.57;0.57;0.93;0.96;1" dur="11s" repeatCount="indefinite"/></text>
+</svg>
