@@ -118,7 +118,9 @@ const SEEN_FILE = join(DIR, '.seen.txt');
 const seen = new Set(existsSync(SEEN_FILE) ? readFileSync(SEEN_FILE, 'utf8').split('\n').map(s => s.trim()).filter(Boolean) : []);
 
 // ── 1+2: discover + cheap title filter ──
-const cutoff = Date.now() - FRESH_HOURS * 3600 * 1000;
+// Freshness is enforced server-side by f_TPR (real timestamps). We do NOT re-filter
+// by the card's `datetime` — that field is date-only, so a sub-day cutoff would wrongly
+// drop yesterday-dated jobs that are still within the window.
 const candidates = [], byId = new Set();
 let fetched = 0, throttles = 0;
 console.log(`LinkedIn scan (account-free) — past ${FRESH_HOURS}h — ${cfg.titles.length} titles × ${cfg.locations.length} locations × ${PASSES.length} pass(es)\n`);
@@ -140,7 +142,6 @@ for (const title of cfg.titles) {
           if (MUST && !MUST.test(c.title)) continue;
           if (EXCLUDE && EXCLUDE.test(c.title)) continue;
           if (BLOCKED && (BLOCKED.test(c.company) || BLOCKED.test(c.title))) continue;
-          if (c.date && Date.parse(c.date) && Date.parse(c.date) < cutoff) continue;
           c.tag = pass.tag;
           candidates.push(c);
         }
