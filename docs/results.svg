@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="812" height="266" font-family="Arial, Helvetica, sans-serif" font-size="12">
+  <rect width="812" height="266" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+
+  <!-- title bar -->
+  <rect width="812" height="32" rx="8" fill="#0f9d58"/>
+  <rect y="24" width="812" height="8" fill="#0f9d58"/>
+  <text x="14" y="21" fill="#ffffff" font-weight="bold" font-size="13">results.csv</text>
+  <text x="798" y="21" fill="#d7f3e3" text-anchor="end" font-size="11">29 rows</text>
+
+  <!-- column-letter strip -->
+  <rect x="0" y="32" width="812" height="20" fill="#f0f2f5"/>
+  <g fill="#57606a" text-anchor="middle" font-size="11">
+    <text x="73" y="46">A</text><text x="173" y="46">B</text><text x="364" y="46">C</text><text x="575" y="46">D</text><text x="731" y="46">E</text>
+  </g>
+
+  <!-- header row -->
+  <rect x="28" y="52" width="784" height="28" fill="#e6f4ea"/>
+  <g fill="#1e5631" font-weight="bold">
+    <text x="34" y="70">date_found</text>
+    <text x="124" y="70">company</text>
+    <text x="234" y="70">title</text>
+    <text x="506" y="70">location</text>
+    <text x="656" y="70">url</text>
+  </g>
+
+  <!-- row-number gutter -->
+  <rect x="0" y="52" width="28" height="214" fill="#f0f2f5"/>
+  <g fill="#8b949e" text-anchor="middle" font-size="10">
+    <text x="14" y="70">1</text><text x="14" y="96">2</text><text x="14" y="122">3</text><text x="14" y="148">4</text>
+    <text x="14" y="174">5</text><text x="14" y="200">6</text><text x="14" y="226">7</text><text x="14" y="252">8</text>
+  </g>
+
+  <!-- data cells -->
+  <g fill="#24292f">
+    <text x="34" y="96">2026-07-01</text><text x="124" y="96">Spotify</text><text x="234" y="96">Data Analyst, Growth</text><text x="506" y="96">New York, NY</text><text x="656" y="96" font-size="11" fill="#0969da">linkedin.com/jobs/view/4435327997</text>
+    <text x="34" y="122">2026-07-01</text><text x="124" y="122">Figma</text><text x="234" y="122">Product Manager, Platform</text><text x="506" y="122">Remote</text><text x="656" y="122" font-size="11" fill="#0969da">linkedin.com/jobs/view/4438120904</text>
+    <text x="34" y="148">2026-07-01</text><text x="124" y="148">Airbnb</text><text x="234" y="148">UX Designer II</text><text x="506" y="148">San Francisco, CA</text><text x="656" y="148" font-size="11" fill="#0969da">linkedin.com/jobs/view/4431775510</text>
+    <text x="34" y="174">2026-07-01</text><text x="124" y="174">Notion</text><text x="234" y="174">Data Analyst</text><text x="506" y="174">Remote</text><text x="656" y="174" font-size="11" fill="#0969da">linkedin.com/jobs/view/4440221863</text>
+    <text x="34" y="200">2026-07-01</text><text x="124" y="200">Stripe</text><text x="234" y="200">Product Manager</text><text x="506" y="200">Seattle, WA</text><text x="656" y="200" font-size="11" fill="#0969da">linkedin.com/jobs/view/4436902247</text>
+    <text x="34" y="226">2026-07-01</text><text x="124" y="226">Datadog</text><text x="234" y="226">Associate Data Analyst</text><text x="506" y="226">Boston, MA</text><text x="656" y="226" font-size="11" fill="#0969da">linkedin.com/jobs/view/4433558091</text>
+    <text x="34" y="252">2026-07-01</text><text x="124" y="252">Airtable</text><text x="234" y="252">Product Designer</text><text x="506" y="252">Remote</text><text x="656" y="252" font-size="11" fill="#0969da">linkedin.com/jobs/view/4439114872</text>
+  </g>
+
+  <!-- gridlines -->
+  <g stroke="#e1e4e8" stroke-width="1">
+    <line x1="28" y1="80" x2="812" y2="80"/><line x1="28" y1="106" x2="812" y2="106"/><line x1="28" y1="132" x2="812" y2="132"/>
+    <line x1="28" y1="158" x2="812" y2="158"/><line x1="28" y1="184" x2="812" y2="184"/><line x1="28" y1="210" x2="812" y2="210"/><line x1="28" y1="236" x2="812" y2="236"/>
+    <line x1="28" y1="52" x2="28" y2="266"/><line x1="118" y1="52" x2="118" y2="266"/><line x1="228" y1="52" x2="228" y2="266"/><line x1="500" y1="52" x2="500" y2="266"/><line x1="650" y1="52" x2="650" y2="266"/>
+  </g>
+</svg>

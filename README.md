@@ -70,6 +70,10 @@ The results show up in `results.csv`. Double-click it to open in Excel or Google
 | `results.jsonl` | The same data as one JSON object per line, if you want to script against it. |
 | `.seen.txt` | The tool's memory so re-runs don't show you the same job twice. Delete it to start over. |
 
+<div align="center">
+  <img src="docs/results.svg" alt="results.csv opened in a spreadsheet showing company, title, location, and link columns" width="760">
+</div>
+
 Run it again tomorrow and you'll only see what's come up since last time.
 
 ---
