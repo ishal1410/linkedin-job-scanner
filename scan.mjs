@@ -77,7 +77,15 @@ const BLOCKED = wordRe(cfg.blockedCompanies);
 const JD_EXCLUDE = (cfg.jdExcludePatterns || []).map(p => new RegExp(p, 'i'));
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-const strip = s => (s || '').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&[a-z#0-9]+;/g, ' ').replace(/\s+/g, ' ').trim();
+// Decode HTML entities properly so names like "O'Reilly", "Macy's", "AT&T" don't
+// come out as "O Reilly" / "Macy s" / "AT T". Numeric entities cover apostrophes
+// (&#39;) and everything else; a few named ones round it out.
+const NAMED = { '&amp;': '&', '&quot;': '"', '&apos;': "'", '&lt;': '<', '&gt;': '>', '&nbsp;': ' ' };
+const decode = s => (s || '')
+  .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
+  .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n))
+  .replace(/&(?:amp|quot|apos|lt|gt|nbsp);/g, m => NAMED[m]);
+const strip = s => decode((s || '').replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 const csvCell = s => `"${String(s ?? '').replace(/"/g, '""')}"`;
 
 // 12s per-request timeout — without it one dead connection hangs the whole scan.
