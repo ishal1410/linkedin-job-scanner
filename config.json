@@ -1,42 +1,32 @@
 {
-  "_comment": "Edit this file to make the scanner yours. Nothing else needs touching.",
+  "_comment": "Edit this file to make the scanner yours. Nothing else needs touching. By default the filters are OFF (empty) — you get every fresh job for your titles/locations. Turn filters on only if you want them (see README for recipes).",
 
   "titles": [
-    "software engineer",
-    "software developer",
-    "backend engineer",
-    "frontend engineer",
-    "full stack engineer",
-    "data engineer"
+    "software engineer"
   ],
 
   "locations": [
     "United States",
-    "New York, United States",
-    "San Francisco Bay Area",
     "Remote"
   ],
 
   "freshnessHours": 24,
 
-  "_experienceLevels_help": "LinkedIn f_E codes: 1=Internship 2=Entry 3=Associate 4=Mid-Senior 5=Director 6=Executive. Leave [] to not filter by level.",
-  "experienceLevels": ["2", "3"],
+  "_experienceLevels_help": "LinkedIn level codes: 1=Internship 2=Entry 3=Associate 4=Mid-Senior 5=Director 6=Executive. [] = all levels.",
+  "experienceLevels": [],
   "includeAllExperience": true,
 
-  "_titleMustMatch_help": "A job's title must contain at least one of these words (case-insensitive). Empty [] = keep all titles.",
-  "titleMustMatch": ["engineer", "developer", "swe", "sde"],
+  "_titleMustMatch_help": "Keep a job only if its title contains one of these words. [] = keep every title (default). Set this ONLY if your `titles` search terms are broad.",
+  "titleMustMatch": [],
 
-  "_titleExclude_help": "Drop the title if it contains any of these words.",
-  "titleExclude": ["senior", "sr", "staff", "principal", "lead", "manager", "director", "vp", "intern", "clearance"],
+  "_titleExclude_help": "Drop a job if its title contains any of these words. Example: [\"senior\", \"staff\", \"intern\"].",
+  "titleExclude": [],
 
+  "_blockedCompanies_help": "Company names to always skip.",
   "blockedCompanies": [],
 
-  "_jdExcludePatterns_help": "OPTIONAL second pass: fetch each job's full description and drop it if any regex matches. Slower (one request per job). Empty [] = skip this pass entirely. Examples below — delete what you don't want.",
-  "jdExcludePatterns": [
-    "\\b([5-9]|\\d{2,})\\+?\\s*years",
-    "must be a us citizen",
-    "security clearance required"
-  ],
+  "_jdExcludePatterns_help": "Optional deeper filter: reads each job's full description and drops it if a regex matches. Slower (one request per job). [] = off. Example: [\"\\\\b([5-9]|\\\\d{2,})\\\\+?\\\\s*years\"].",
+  "jdExcludePatterns": [],
 
   "maxResultsPerQuery": 300
 }

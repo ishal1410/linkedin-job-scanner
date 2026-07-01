@@ -21,22 +21,32 @@ node scan.mjs
 
 ## Make it yours — edit `config.json`
 
-That one file is the whole product. Nothing else needs touching.
+That one file is the whole product. Nothing else needs touching. **Out of the
+box every filter is off** — set your `titles` and `locations`, run it, and you
+get every fresh job. Turn on filters only if you want them.
 
 | Key | What it does |
 |-----|--------------|
-| `titles` | Search terms — the roles you want (`"data scientist"`, `"product designer"`, …). |
-| `locations` | Where to search. `"United States"` = nationwide; `"Remote"`; or a city like `"Austin, Texas, United States"`. |
+| `titles` | Search terms — the roles you want. Works for **any** field: `"data scientist"`, `"product designer"`, `"registered nurse"`, `"accountant"`. |
+| `locations` | Where to search. `"United States"` = nationwide; `"Remote"`; a city like `"Austin, Texas, United States"`; or a country like `"United Kingdom"`. |
 | `freshnessHours` | Only jobs posted within this many hours (default 24). |
-| `experienceLevels` | LinkedIn level codes: `1`=Internship `2`=Entry `3`=Associate `4`=Mid-Senior `5`=Director `6`=Executive. `[]` = don't filter. |
-| `includeAllExperience` | Also run a pass with no level filter (catches untagged jobs, esp. startups). |
-| `titleMustMatch` | A job's title must contain one of these words. `[]` = keep every title. |
-| `titleExclude` | Drop the job if its title contains any of these (e.g. `senior`, `intern`). |
+| `experienceLevels` | LinkedIn level codes: `1`=Internship `2`=Entry `3`=Associate `4`=Mid-Senior `5`=Director `6`=Executive. `[]` = all levels (default). |
+| `includeAllExperience` | Also run a pass with no level filter (catches jobs LinkedIn left untagged). |
+| `titleMustMatch` | Keep a job only if its title has one of these words. `[]` = keep every title (default). |
+| `titleExclude` | Drop a job if its title has any of these words. |
 | `blockedCompanies` | Company names to always skip. |
-| `jdExcludePatterns` | Optional deeper filter: reads each job's full description and drops it if a regex matches (e.g. `"5\\+ years"`, `"us citizen"`). Slower. `[]` = skip. |
+| `jdExcludePatterns` | Optional slower filter: reads each job's full description, drops it if a regex matches. `[]` = off (default). |
 | `maxResultsPerQuery` | Cap per search (default 300). |
 
 Change a value, save, run again. That's it.
+
+### Recipes (copy into `config.json` if you want them)
+
+- **Only entry-level / new-grad:** `"experienceLevels": ["1", "2"]`
+- **No senior/lead roles:** `"titleExclude": ["senior", "sr", "staff", "principal", "lead", "manager", "director"]`
+- **Broad search term, tight results** (e.g. searching `"engineer"` but you only want software): `"titleMustMatch": ["software", "backend", "frontend", "full stack"]`
+- **Skip jobs demanding lots of experience:** `"jdExcludePatterns": ["\\b([5-9]|\\d{2,})\\+?\\s*years"]`
+- **Skip a company:** `"blockedCompanies": ["Acme Corp", "Initech"]`
 
 ## Usage
 

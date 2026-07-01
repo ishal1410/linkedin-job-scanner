@@ -22,8 +22,26 @@ import { readFileSync, appendFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
+// Fail loudly and helpfully instead of "fetch is not defined" three screens down.
+if (typeof fetch !== 'function') {
+  console.error(`This needs Node.js 18 or newer (you have ${process.version}). Get it: https://nodejs.org`);
+  process.exit(1);
+}
+
 const DIR = dirname(fileURLToPath(import.meta.url));
-const cfg = JSON.parse(readFileSync(join(DIR, 'config.json'), 'utf8'));
+let cfg;
+try {
+  cfg = JSON.parse(readFileSync(join(DIR, 'config.json'), 'utf8'));
+} catch (e) {
+  console.error(existsSync(join(DIR, 'config.json'))
+    ? `config.json has a typo (not valid JSON): ${e.message}\nTip: check for a missing comma or quote.`
+    : `config.json not found next to scan.mjs.`);
+  process.exit(1);
+}
+if (!cfg.titles?.length || !cfg.locations?.length) {
+  console.error('config.json needs at least one entry in "titles" and one in "locations".');
+  process.exit(1);
+}
 
 const WEEK = process.argv.includes('--week');
 const DRY  = process.argv.includes('--dry-run');
