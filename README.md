@@ -16,8 +16,13 @@ Needs [Node.js](https://nodejs.org) 18+ (for built-in `fetch`). No `npm install`
 ```bash
 git clone <your-fork-url>
 cd linkedin-job-scanner
+# 1. open config.json, put YOUR roles + locations in "titles" and "locations"
+# 2. run it:
 node scan.mjs
 ```
+
+The shipped `config.json` has a placeholder — the scanner will remind you to set
+your own roles the first time. It works for **any** job, not just tech.
 
 ## Make it yours — edit `config.json`
 

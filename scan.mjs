@@ -42,6 +42,10 @@ if (!cfg.titles?.length || !cfg.locations?.length) {
   console.error('config.json needs at least one entry in "titles" and one in "locations".');
   process.exit(1);
 }
+if (cfg.titles.some(t => /replace me/i.test(t))) {
+  console.error('Open config.json and replace the placeholder in "titles" with the roles you want (e.g. "software engineer", "data analyst", "nurse"). Then run again.');
+  process.exit(1);
+}
 
 const WEEK = process.argv.includes('--week');
 const DRY  = process.argv.includes('--dry-run');

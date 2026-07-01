@@ -1,8 +1,8 @@
 {
-  "_comment": "Edit this file to make the scanner yours. Nothing else needs touching. By default the filters are OFF (empty) — you get every fresh job for your titles/locations. Turn filters on only if you want them (see README for recipes).",
+  "_START_HERE": "REPLACE the titles and locations below with YOUR OWN. These two are just a demo. Titles = whatever you'd type in LinkedIn's search box (any field: nurse, accountant, product manager...). Locations = a country, city, or 'Remote'. Everything else is optional and OFF by default — see README for filter recipes.",
 
   "titles": [
-    "software engineer"
+    "REPLACE ME — e.g. software engineer"
   ],
 
   "locations": [
